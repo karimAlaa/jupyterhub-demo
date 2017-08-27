@@ -11,7 +11,7 @@ import netifaces
 docker_ip = netifaces.ifaddresses('docker0')[netifaces.AF_INET][0]['addr']
 c.JupyterHub.hub_ip = docker_ip
 
-c.JupyterHub.proxy_cmd = ['configurable-http-proxy', '--redirect-port', '80']
+#c.JupyterHub.proxy_cmd = ['configurable-http-proxy', '--redirect-port', '80']
 
 
 # OAuth with GitHub
