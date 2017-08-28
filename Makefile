@@ -7,7 +7,7 @@ install:
 	./install.sh
 
 start:
-	supervisorctl start juptyerhub
+	supervisorctl start jupyterhub
 
 restart:
 	supervisorctl restart jupyterhub
