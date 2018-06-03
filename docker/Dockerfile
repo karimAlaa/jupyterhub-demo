@@ -7,7 +7,7 @@ ENV HADOOP_VERSION 2.4
 
 RUN apt-get -y update && \
     apt-get install --no-install-recommends -y openjdk-8-jre-headless ca-certificates-java && \
-    apt-get clean && \
+     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 RUN apt-get -y update && apt-get install netcat -y
@@ -27,8 +27,8 @@ ENV SPARK_OPTS --driver-java-options=-Xms1024M --driver-java-options=-Xmx4096M -
 EXPOSE 4040
 RUN python3 -m pip install jupyterhub==0.8.0b3
 
-RUN wget -O /home/$NB_USER/work/Exam.ipynb https://www.dropbox.com/s/uz73y78ahugqt8u/Fina%2BExam.ipynb?dl=0
-RUN jupyter trust /home/$NB_USER/work/Exam.ipynb
+RUN wget -O /home/$NB_USER/work/Quiz.ipynb https://www.dropbox.com/s/ocjm5u5eb2x3w5j/Quiz.ipynb?dl=0
+RUN jupyter trust /home/$NB_USER/work/Quiz.ipynb
 
 RUN mkdir /home/$NB_USER/work/data && \
     wget -O /home/$NB_USER/work/data/flight-data.zip https://www.dropbox.com/s/g4c3eap5j3r33d9/flight-data.zip?dl=0 && \

@@ -1,7 +1,14 @@
 # Configuration file for Jupyter Hub
 
-c = get_config()
+#c = get_config()
+#c.JupyterHub.spawner_class = 'jupyterhub.spawner.LocalProcessSpawner'
 
+#c.JupyterHub.spawner_class = 'dockerspawner.SystemUserSpawner'
+#c.SystemUserSpawner.host_homedir_format_string = '/home/{username}'
+
+
+# #---------------------------------------------
+#Working in BD2
 # spawn with Docker
 c.JupyterHub.spawner_class = 'dockerspawner.DockerSpawner'
 c.DockerSpawner.container_image = 'singleuser'
@@ -12,14 +19,17 @@ docker_ip = netifaces.ifaddresses('docker0')[netifaces.AF_INET][0]['addr']
 c.JupyterHub.hub_ip = docker_ip
 c.DockerSpawner.extra_host_kwargs.update({ 'port_bindings': {'%i/tcp' % 4040: (docker_ip,) }})
 
+
+
+
 #c.JupyterHub.proxy_cmd = ['configurable-http-proxy', '--redirect-port', '80']
+
 
 # OAuth with GitHub
 #c.JupyterHub.authenticator_class = 'oauthenticator.GitHubOAuthenticator'
 
 c.Authenticator.whitelist = whitelist = set()
 c.Authenticator.admin_users = admin = set()
-
 c.JupyterHub.admin_access = True
 
 import os
